@@ -1,5 +1,5 @@
 /*
- * (C) Copyright 2005- ECMWF.
+ * Copyright 2005-2019 ECMWF.
  *
  * This software is licensed under the terms of the Apache Licence Version 2.0
  * which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
@@ -15,8 +15,9 @@
 
 #ifdef ECCODES_ON_WINDOWS
 extern int optind, opterr;
-extern char* optarg;
-int getopt(int argc, char* argv[], const char* optstring);
+extern char *optarg;
+int getopt(int argc, char *argv[], const char *optstring);
 #endif
 
 #endif
+

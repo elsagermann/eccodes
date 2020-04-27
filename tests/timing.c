@@ -1,5 +1,5 @@
 /*
- * (C) Copyright 2005- ECMWF.
+ * Copyright 2005-2019 ECMWF.
  *
  * This software is licensed under the terms of the Apache Licence Version 2.0
  * which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
@@ -238,7 +238,7 @@ int main(int argc, char* argv[]) {
   if (argc != 2) usage(argv[0]);
   finname=argv[1];
 
-  fin = fopen(finname,"rb");
+  fin = fopen(finname,"r");
   if(!fin) {perror(finname);exit(1);}
 
   c=grib_context_get_default();

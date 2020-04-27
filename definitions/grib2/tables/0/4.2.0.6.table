@@ -1,3 +1,4 @@
+# Product Discipline 0: Meteorological products, Parameter Category 6: Cloud
 0 0 Cloud Ice (kg m-2)
 1 1 Total cloud cover (%)
 2 2 Convective cloud cover (%)
@@ -23,5 +24,7 @@
 22 22 Cloud cover (%)
 23 23 Cloud ice mixing ratio (kg kg-1)
 24 24 Sunshine (Numeric)
+# 23-191 Reserved
+# 192-254 Reserved for local use
 255 255 Missing
 

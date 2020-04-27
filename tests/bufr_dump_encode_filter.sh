@@ -1,5 +1,5 @@
 #!/bin/sh
-# (C) Copyright 2005- ECMWF.
+# Copyright 2005-2019 ECMWF.
 #
 # This software is licensed under the terms of the Apache Licence Version 2.0
 # which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
@@ -37,7 +37,7 @@ fRules=${label}.filter
 #-----------------------------------------------------------
 files=`cat ${data_dir}/bufr/bufr_data_files.txt`
 
-# Exclude BUFR files for various reasons:
+# Exclude BUFR files for various reasosn:
 # ias1_240.bufr: Too large. The filter rules file generated is too big for the parser!
 # tropical_cyclone.bufr: multi-message
 # syno_multi.bufr: multi-message
@@ -60,7 +60,6 @@ do
     ${tools_dir}/bufr_dump -Efilter $f > $fRules
 
     ${tools_dir}/codes_bufr_filter -o $fBufrTmp $fRules $f
-
     ${tools_dir}/bufr_compare $fBufrTmp $f
 
     TEMP_OUT1=${label}.$f.dump.out

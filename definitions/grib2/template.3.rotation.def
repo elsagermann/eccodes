@@ -1,4 +1,4 @@
-# (C) Copyright 2005- ECMWF.
+# Copyright 2005-2019 ECMWF.
 
 #  Latitude of the southern pole of projection
 signed[4] latitudeOfSouthernPole : no_copy;
@@ -18,4 +18,4 @@ alias geography.angleOfRotationInDegrees=angleOfRotation;
 
 alias angleOfRotationOfProjection=angleOfRotation;
 
-alias isRotatedGrid=one;
+alias is_rotated_grid=one;

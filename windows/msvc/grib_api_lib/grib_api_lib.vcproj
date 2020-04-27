@@ -1839,6 +1839,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\grib_expression.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\grib_iterator_class.h"
 				>
 			</File>

@@ -1,4 +1,4 @@
-# (C) Copyright 2005- ECMWF.
+# Copyright 2005-2019 ECMWF.
 
 # TEMPLATE 3.110, Equatorial azimuthal equidistant projection
 include "grib2/template.3.shape_of_the_earth.def";
@@ -30,6 +30,7 @@ unsigned[4] Dx  : dump ;
 unsigned[4] Dy  : dump ;
 
 #  Projection centre flag
-unsigned[1] projectionCentreFlag  : dump ;
+unsigned[1] projectionCenterFlag  : dump ;
 
 include "grib2/template.3.scanning_mode.def";
+

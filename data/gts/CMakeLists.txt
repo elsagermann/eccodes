@@ -1,11 +1,12 @@
 # data/gts/CMakeLists.txt
 # Download all the GTS data and reference files from website
 #
-file(READ "gts_data_files.txt" gts_files_to_download)
-string(REGEX REPLACE "\n" ";" gts_files_to_download "${gts_files_to_download}")
 
-file(READ "gts_ref_files.txt" gts_refs_to_download)
-string(REGEX REPLACE "\n" ";" gts_refs_to_download "${gts_refs_to_download}")
+FILE(READ "gts_data_files.txt" gts_files_to_download)
+STRING(REGEX REPLACE "\n" ";" gts_files_to_download "${gts_files_to_download}")
+
+FILE(READ "gts_ref_files.txt" gts_refs_to_download)
+STRING(REGEX REPLACE "\n" ";" gts_refs_to_download "${gts_refs_to_download}")
 
 if( ENABLE_EXTRA_TESTS )
     ecbuild_get_test_multidata(
@@ -16,7 +17,7 @@ if( ENABLE_EXTRA_TESTS )
 endif()
 
 # Copy other files - e.g. text files etc from the source data/gts dir
-list(APPEND other_files
+LIST(APPEND other_files
     gts_data_files.txt
     gts_ref_files.txt
 )

@@ -1,5 +1,5 @@
 #!/bin/sh
-# (C) Copyright 2005- ECMWF.
+# Copyright 2005-2019 ECMWF.
 #
 # This software is licensed under the terms of the Apache Licence Version 2.0
 # which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
@@ -16,6 +16,7 @@ label="bufr_dump_data_test"
 #Create log file
 fLog=${label}".log"
 rm -f $fLog
+touch $fLog
 
 #Define tmp bufr files
 fJsonTmp=${label}".json.tmp"
@@ -31,7 +32,8 @@ fi
 bufr_files=`cat ${data_dir}/bufr/bufr_data_files.txt`
 REDIRECT=/dev/null
 
-for file in ${bufr_files}; do
+for file in ${bufr_files}
+do
   ${tools_dir}/bufr_dump -O ${data_dir}/bufr/$file >/dev/null
 done
 
@@ -43,11 +45,11 @@ file="aaen_55.bufr"
 export ECCODES_DEBUG=1
 
 # By default debug output goes to stderr
-${tools_dir}/bufr_dump -O ${data_dir}/bufr/$file 2>&1 | grep -q "parsing include file"
+${tools_dir}/bufr_dump -O ${data_dir}/bufr/$file 2>&1 | grep -q "BUFR data .*ing"
 
 # Redirect it to stdout
 export ECCODES_LOG_STREAM=stdout
-${tools_dir}/bufr_dump -O ${data_dir}/bufr/$file | grep -q "parsing include file"
+${tools_dir}/bufr_dump -O ${data_dir}/bufr/$file | grep -q "BUFR data .*ing"
 
 unset ECCODES_DEBUG
 unset ECCODES_LOG_STREAM

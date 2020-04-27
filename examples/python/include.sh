@@ -21,9 +21,6 @@ else
   PYTHONPATH=$cpath/python:$cpath/python/.libs:$PYTHONPATH
   export PYTHONPATH
 
-  HAVE_MEMFS=0
-  ECCODES_ON_WINDOWS=0
-
   # Download the data needed for tests
   ${data_dir}/download.sh "${data_dir}"
 

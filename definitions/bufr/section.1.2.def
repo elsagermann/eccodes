@@ -1,4 +1,4 @@
-# (C) Copyright 2005- ECMWF.
+# Copyright 2005-2019 ECMWF.
 position offsetSection1;
 section_length[3] section1Length ;
 
