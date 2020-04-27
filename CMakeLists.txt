@@ -1,5 +1,5 @@
 #
-# (C) Copyright 2005- ECMWF.
+# Copyright 2005-2019 ECMWF.
 #
 # This software is licensed under the terms of the Apache Licence Version 2.0
 # which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
@@ -64,7 +64,6 @@ endif()
 
 ecbuild_debug("ECCODES_BIG_ENDIAN=${ECCODES_BIG_ENDIAN}")
 ecbuild_debug("ECCODES_LITTLE_ENDIAN=${ECCODES_LITTLE_ENDIAN}")
-ecbuild_info("Operating system=${CMAKE_SYSTEM} (${EC_OS_BITS} bits)")
 
 ###############################################################################
 # some variables/options of this project
@@ -78,18 +77,6 @@ ecbuild_add_option( FEATURE JPG
     DESCRIPTION "Support for JPG decoding/encoding"
     DEFAULT ON
 )
-# Options related to JPG. The Jasper and OpenJPEG libraries
-ecbuild_add_option( FEATURE JPG_LIBJASPER
-    DESCRIPTION "Support for JPG decoding/encoding with the Jasper library"
-    CONDITION ENABLE_JPG
-    DEFAULT ON
-)
-ecbuild_add_option( FEATURE JPG_LIBOPENJPEG
-    DESCRIPTION "Support for JPG decoding/encoding with the OpenJPEG library"
-    CONDITION ENABLE_JPG
-    DEFAULT ON
-)
-
 
 ecbuild_add_option( FEATURE PNG
     DESCRIPTION "Support for PNG decoding/encoding"
@@ -118,7 +105,7 @@ ecbuild_add_option( FEATURE AEC
 )
 
 ecbuild_add_option( FEATURE PYTHON
-    DESCRIPTION "Build the ecCodes Python2 interface (deprecated)"
+    DESCRIPTION "Build the ecCodes Python interface"
     DEFAULT ON
     REQUIRED_PACKAGES "Python VERSION 2.6 NO_LIBS" NumPy
 )
@@ -204,8 +191,8 @@ set( HAVE_LIBOPENJPEG 0 )
 
 if( ENABLE_JPG )
 
-    # Note: The function ecbuild_add_extra_search_paths is deprecated but we need it to find Jasper at ECMWF.
-    #       It modifies CMAKE_PREFIX_PATH
+    # Note: This is a deprecated feature but we need it to find Jasper at ECMWF.
+    #       ecbuild_add_extra_search_paths modifies CMAKE_PREFIX_PATH
     #       which can affect future package discovery if not undone by the caller.
     #       The current CMAKE_PREFIX_PATH is backed up as _CMAKE_PREFIX_PATH
     #
@@ -217,7 +204,7 @@ if( ENABLE_JPG )
 
     find_package( OpenJPEG )
 
-    if( JASPER_FOUND AND ENABLE_JPG_LIBJASPER )
+    if( JASPER_FOUND )
         list( APPEND ECCODES_TPLS Jasper )
         set( HAVE_JPEG 1 )
         set( HAVE_LIBJASPER 1 )
@@ -225,15 +212,13 @@ if( ENABLE_JPG )
         string(REGEX REPLACE "^([0-9]+)\\.[0-9]+\\.[0-9]+.*" "\\1" JASPER_VERSION_MAJOR "${JASPER_VERSION_STRING}")
     endif()
 
-    if( OPENJPEG_FOUND AND ENABLE_JPG_LIBOPENJPEG )
+    if( OPENJPEG_FOUND )
         list( APPEND ECCODES_TPLS OpenJPEG )
         set( HAVE_JPEG 1 )
         set( HAVE_LIBOPENJPEG 1 )
     endif()
 
     ecbuild_info(" HAVE_JPEG=${HAVE_JPEG}")
-    ecbuild_info(" HAVE_LIBJASPER=${HAVE_LIBJASPER}")
-    ecbuild_info(" HAVE_LIBOPENJPEG=${HAVE_LIBOPENJPEG}")
 
 endif()
 
@@ -306,11 +291,9 @@ if( IEEE_LE )
     set( IEEE_BE 0 )
 endif()
 
-set( ECCODES_ON_WINDOWS 0 )
 if( EC_OS_NAME MATCHES "windows" )
     # Symbols need to be explicitly exported on Windows so we can link to dlls.
     set( CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE )
-    set( ECCODES_ON_WINDOWS 1 )
 
     # Suppress compliler warnings - see ECC-850
     # Suppress warnings about using 'insecure' functions. Fixing this would require changes all over
@@ -479,12 +462,6 @@ if( HAVE_FORTRAN )
 endif()
 
 ###############################################################################
-# Debugging aid. Print all known CMake variables
-# get_cmake_property(_variableNames VARIABLES)
-# foreach( _variableName ${_variableNames} )
-#   ecbuild_info("  ${_variableName}=${${_variableName}}")
-# endforeach()
-###############################################################################
 # finalize
 
 ecbuild_install_project( NAME ${CMAKE_PROJECT_NAME} )
@@ -496,10 +473,6 @@ ecbuild_info("   +--------------------------+")
 ecbuild_info("   |  ecCodes version ${ECCODES_VERSION}  |")
 ecbuild_info("   +--------------------------+")
 ecbuild_info("")
-
-if( HAVE_PYTHON )
-  ecbuild_deprecate("Python2 support is deprecated and will be discontinued")
-endif()
 
 ecbuild_info("   +--------------------------------------+")
 ecbuild_info("   | Please note:                         |")

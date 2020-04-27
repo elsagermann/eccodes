@@ -194,7 +194,6 @@
     <ClCompile Include="..\..\..\src\bufr_keys_iterator.c" />
     <ClCompile Include="..\..\..\src\bufr_util.c" />
     <ClCompile Include="..\..\..\src\codes_memfs.c" />
-    <ClCompile Include="..\..\..\src\codes_util.c" />
     <ClCompile Include="..\..\..\src\eccodes.c" />
     <ClCompile Include="..\..\..\src\functions.c" />
     <ClCompile Include="..\..\..\src\grib_2order_packer_simple.c" />
@@ -548,6 +547,7 @@
     <ClInclude Include="..\..\..\src\grib_dumper_class.h" />
     <ClInclude Include="..\..\..\src\grib_dumper_factory.h" />
     <ClInclude Include="..\..\..\src\grib_emoslib.h" />
+    <ClInclude Include="..\..\..\src\grib_expression.h" />
     <ClInclude Include="..\..\..\src\grib_iterator_class.h" />
     <ClInclude Include="..\..\..\src\grib_iterator_factory.h" />
     <ClInclude Include="..\..\..\src\grib_nearest_class.h" />

@@ -1,4 +1,4 @@
-# (C) Copyright 2005- ECMWF.
+# Copyright 2005-2019 ECMWF.
 
 # used in local definition 13
 constant GRIBEXSection1Problem = 60 - section1Length ;

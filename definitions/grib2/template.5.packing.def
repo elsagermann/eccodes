@@ -1,4 +1,4 @@
-# (C) Copyright 2005- ECMWF.
+# Copyright 2005-2019 ECMWF.
 
 #  Reference value (R)
 # The copy_ok means that the value is copied when changing the representation

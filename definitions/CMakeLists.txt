@@ -5,15 +5,6 @@ set(definition_files ${definition_files} PARENT_SCOPE) # needed for memfs
 file( GLOB table_files      RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.table" )
 file( GLOB text_files       RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.txt" )
 
-# Collect all directories at the top-level of definitions
-file( GLOB children RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*" )
-set( dirlist "" )
-foreach( child ${children} )
-  if( IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${child} )
-      list( APPEND dirlist ${child} )
-  endif()
-endforeach()
-
 if(HAVE_INSTALL_ECCODES_DEFINITIONS)
 
   install( FILES ${definition_files} ${table_files} ${text_files}
@@ -23,7 +14,7 @@ if(HAVE_INSTALL_ECCODES_DEFINITIONS)
   install( FILES installDefinitions.sh
            DESTINATION ${ECCODES_DEFINITION_SUFF})
 
-  install(  DIRECTORY ${dirlist}
+  install(  DIRECTORY budg bufr cdf common grib1 grib2 grib3 gts mars metar tide hdf5 wrap
             DESTINATION ${ECCODES_DEFINITION_SUFF}
             FILES_MATCHING
             PATTERN "*.def"

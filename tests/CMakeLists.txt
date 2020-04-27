@@ -20,7 +20,6 @@ list( APPEND test_bins
       unit_tests
       bufr_keys_iter
       gauss_sub
-      grib_nearest_test
       grib_util_set_spec
       grib_local_MeteoFrance
       grib_2nd_order_numValues
@@ -29,7 +28,6 @@ list( APPEND test_bins
       grib_ecc-386
       bufr_ecc-517
       bufr_get_element
-      bufr_extract_headers
       grib_sh_ieee64
       ieee
       grib_sh_imag
@@ -58,7 +56,6 @@ list( APPEND tests_no_data_reqd
     grib_2nd_order_numValues
     grib_ecc-136
     grib_ecc-967
-    grib_ecc-1065
     julian
     bufr_dump_samples
     bufr_json_samples
@@ -67,14 +64,10 @@ list( APPEND tests_no_data_reqd
     bufr_rdbSubTypes
     grib_efas
     grib_sh_imag
-    diag
-    grib_lambert_conformal
 )
 # These tests do require data downloads
 list( APPEND tests_data_reqd
-    grib_data_quality_checks
     bpv_limit
-    grib_complex
     grib_double_cmp
     grib_change_packing
     bufr_dump_data
@@ -98,9 +91,9 @@ list( APPEND tests_data_reqd
     bufr_keys_iter
     bufr_get_element
     bufr_wmo_tables
-    bufr_extract_headers
     bufr_ecc-673
     bufr_ecc-428
+    bufr_ecc-197
     bufr_ecc-286
     bufr_ecc-288
     bufr_ecc-313
@@ -121,9 +114,7 @@ list( APPEND tests_data_reqd
     grib_ecc-923
     grib_ecc-979
     grib_ecc-984
-    grib_ecc-1000
     grib_ecc-1001
-    grib_ecc-1030
     bufr_ecc-556
     gts_get
     gts_ls
@@ -150,7 +141,6 @@ list( APPEND tests_data_reqd
     grib_ls_json
     grib_filter
     grib_multi
-    grib_nearest_test
     budg
     grib_gridType
     grib_octahedral
@@ -256,20 +246,6 @@ ecbuild_add_test( TARGET eccodes_t_grib_lamb_az_eq_area
 
 # These ones are conditional
 ###########################################
-ecbuild_add_test( TARGET eccodes_t_tools_data_from_stdin
-                  TYPE SCRIPT
-                  CONDITION NOT ECCODES_ON_WINDOWS AND ENABLE_EXTRA_TESTS
-                  COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tools_data_from_stdin.sh
-                  TEST_DEPENDS eccodes_download_bufrs
-)
-
-ecbuild_add_test( TARGET eccodes_t_bufr_ecc-197
-                  TYPE SCRIPT
-                  CONDITION NOT ECCODES_ON_WINDOWS AND ENABLE_EXTRA_TESTS
-                  COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/bufr_ecc-197.sh
-                  TEST_DEPENDS eccodes_download_bufrs
-)
-
 if( ENABLE_EXTRA_TESTS AND HAVE_ECCODES_THREADS )
     ecbuild_add_executable( TARGET    grib_encode_pthreads
                             NOINSTALL
@@ -348,3 +324,4 @@ ecbuild_add_test( TARGET eccodes_t_grib_ecc-386
                   COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/grib_ecc-386.sh
                   TEST_DEPENDS eccodes_download_gribs
 )
+

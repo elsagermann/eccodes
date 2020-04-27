@@ -9,8 +9,7 @@ assert len(sys.argv) > 2
 
 # For now exclude GRIB3 as it is still experimental
 # The BUFR codetables is not used in the engine
-# METAR and TAF are also experimental
-EXCLUDED = ['grib3', 'codetables', 'taf', 'metar']
+EXCLUDED = ['grib3', 'codetables']
 
 dirs = [os.path.realpath(x) for x in sys.argv[1:-1]]
 print(dirs)
@@ -39,7 +38,7 @@ for directory in dirs:
     for dirpath, dirnames, files in os.walk(directory, followlinks=True):
         for ex in EXCLUDED:
             if ex in dirnames:
-                print('Note: eccodes memfs.py script: %s/%s will not be included.' % (dirpath,ex))
+                print('Note: %s/%s will not be included.' % (dirpath,ex))
 
         # Prune the walk by modifying the dirnames in-place
         dirnames[:] = [dirname for dirname in dirnames if dirname not in EXCLUDED]

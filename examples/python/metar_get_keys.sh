@@ -1,5 +1,5 @@
 #!/bin/sh
-# (C) Copyright 2005- ECMWF.
+# Copyright 2005-2019 ECMWF.
 #
 # This software is licensed under the terms of the Apache Licence Version 2.0
 # which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
@@ -9,10 +9,7 @@
 #
 
 . ./include.sh
-if [ $HAVE_MEMFS -eq 1 ]; then
-   echo "$0: This test is currently disabled with MEMFS"
-   exit 0
-fi
+
 
 #Define a common label for all the tmp files
 label="metar_get_keys_test_p"

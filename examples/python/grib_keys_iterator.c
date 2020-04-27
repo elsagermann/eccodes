@@ -1,5 +1,5 @@
 /*
- * (C) Copyright 2005- ECMWF.
+ * Copyright 2005-2019 ECMWF.
  *
  * This software is licensed under the terms of the Apache Licence Version 2.0
  * which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
@@ -8,12 +8,25 @@
  * virtue of its status as an intergovernmental organisation nor does it submit to any jurisdiction.
  */
 
+/*
+ * C Implementation: grib_keys_iterator
+ *
+ * Description:
+ * Example on how to use keys_iterator functions and the
+ * codes_keys_iterator structure to get all the available
+ * keys in a GRIB message.
+ *
+ */
+
+#include <assert.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 #include <string.h>
 
 #include "eccodes.h"
 
+#define MAX_KEY_LEN  255
 #define MAX_VAL_LEN  1024
 
 static void usage(char* progname);
@@ -27,7 +40,7 @@ int main(int argc, char *argv[])
     unsigned long key_iterator_filter_flags=CODES_KEYS_ITERATOR_ALL_KEYS;
 
   /* Choose a namespace. E.g. "ls", "time", "parameter", "geography", "statistics" */
-  const char* name_space="ls";
+  char* name_space="ls";
 
   /* name_space=NULL to get all the keys */
   /* char* name_space=0; */
@@ -43,13 +56,13 @@ int main(int argc, char *argv[])
 
   if (argc != 2) usage(argv[0]);
 
-    f = fopen(argv[1],"rb");
+  f = fopen(argv[1],"r");
   if(!f) {
     perror(argv[1]);
     exit(1);
   }
 
-    while((h = codes_handle_new_from_file(0,f,PRODUCT_GRIB,&err)) != NULL)
+  while((h = grib_handle_new_from_file(0,f,&err)) != NULL)
   {
     codes_keys_iterator* kiter=NULL;
     msg_count++;

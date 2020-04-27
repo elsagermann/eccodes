@@ -1,4 +1,4 @@
-# (C) Copyright 2005- ECMWF.
+# Copyright 2005-2019 ECMWF.
 
 position   offsetSection0;
 constant section0Length=16;

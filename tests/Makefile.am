@@ -43,6 +43,7 @@ TESTS = definitions.sh \
         grib_compare.sh \
         grib_level.sh \
         index.sh \
+        grib_bitmap.sh \
         grib_list.sh \
         grib_second_order.sh \
         grib_change_scanning.sh \
@@ -54,13 +55,13 @@ TESTS = definitions.sh \
         read_any.sh \
         grib_padding.sh \
         grib_lamb_az_eq_area.sh \
-        grib_lambert_conformal.sh \
         grib_to_netcdf.sh \
         grib_dump_debug.sh \
         grib_jpeg.sh \
         grib_ccsds.sh \
         md5.sh \
         grib_neg_fctime.sh \
+        bufr_ecc-197.sh \
         bufr_ecc-286.sh \
         bufr_ecc-288.sh
 

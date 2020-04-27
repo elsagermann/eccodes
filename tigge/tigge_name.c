@@ -1,5 +1,5 @@
 /*
- * (C) Copyright 2005- ECMWF.
+ * Copyright 2005-2019 ECMWF.
  *
  * This software is licensed under the terms of the Apache Licence Version 2.0
  * which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
@@ -27,7 +27,9 @@
 #include <sys/types.h>
 #include "tigge_tools.h"
 
-#ifdef ECCODES_ON_WINDOWS
+#ifndef ECCODES_ON_WINDOWS
+  #include <dirent.h>
+#else
   #include <direct.h>
   #include <io.h>
 #endif
@@ -116,7 +118,7 @@ static void verify(grib_handle *h,const char* full,const char* base)
 
 void validate(const char* path)
 {
-    FILE *f = fopen(path,"rb");
+    FILE *f = fopen(path,"r");
     grib_handle *h = 0;
     int err;
     int count = 0;

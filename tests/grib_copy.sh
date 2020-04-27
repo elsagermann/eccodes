@@ -1,5 +1,5 @@
 #!/bin/sh
-# (C) Copyright 2005- ECMWF.
+# Copyright 2005-2019 ECMWF.
 #
 # This software is licensed under the terms of the Apache Licence Version 2.0
 # which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
@@ -10,6 +10,8 @@
 
 . ./include.sh
 
+#set -x
+
 #Enter data dir
 cd ${data_dir}
 
@@ -17,26 +19,9 @@ cd ${data_dir}
 label="grib_copy_test"
 temp=${label}".grib.tmp"
 
-
-echo "Test: The -g option..."
-# -----------------------------------
-input=gts.grib
-${tools_dir}/grib_copy -w count=1 -g $input $temp
-val1=`${tools_dir}/gts_get -wcount=1 -p AA $input`
-val2=`${tools_dir}/gts_get -p AA $temp`
-[ "$val1" = "$val2" ]
-[ "$val1" = "XK" ]
-
-${tools_dir}/grib_copy -w count=1 $input $temp
-set +e
-${tools_dir}/gts_get -p AA $temp
-status=$?
-set -e
-[ $status -ne 0 ]
-
-
-echo "Test: The -X option..."
-# -------------------------------
+#-------------------------------------------------------------------
+# Test: The -X option
+#-------------------------------------------------------------------
 echo "Test: use of -X option"
 input=tigge_pf_ecmwf.grib2
 ${tools_dir}/grib_copy -w count=1 -X 0 $input $temp #First msg

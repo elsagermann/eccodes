@@ -1,1 +1,0 @@
-SET(ENABLE_EXTRA_TESTS ON CACHE BOOL "Enable extra tests")

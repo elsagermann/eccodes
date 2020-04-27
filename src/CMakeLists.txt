@@ -1,5 +1,5 @@
 #
-# (C) Copyright 2005- ECMWF.
+# Copyright 2005-2019 ECMWF.
 #
 # This software is licensed under the terms of the Apache Licence Version 2.0
 # which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
@@ -358,7 +358,6 @@ list( APPEND grib_api_srcs
     grib_iterator_class_regular.c
     grib_iterator_class_space_view.c
     grib_expression.c
-    codes_util.c
     grib_util.c
     bufr_util.c
     string_util.c
@@ -372,6 +371,7 @@ list( APPEND grib_api_srcs
     grib_dumper_class.h
     grib_dumper_factory.h
     grib_emoslib.h
+    grib_expression.h
     grib_iterator_class.h
     grib_iterator_factory.h
     grib_nearest_class.h

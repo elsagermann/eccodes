@@ -1,4 +1,4 @@
-# (C) Copyright 2005- ECMWF.
+# Copyright 2005-2019 ECMWF.
 
 #  Number of tens of thousands of years of offset
 signed[2] numberOfTensOfThousandsOfYearsOfOffset = missing() : can_be_missing,dump,no_copy,edition_specific;

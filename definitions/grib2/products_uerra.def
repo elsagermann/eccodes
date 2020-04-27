@@ -1,4 +1,4 @@
-# (C) Copyright 2005- ECMWF.
+# Copyright 2005-2019 ECMWF.
 
 # Uncertainties in ensembles of regional re-analysis project (UERRA)
 constant marsClass = 'ur';

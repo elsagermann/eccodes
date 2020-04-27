@@ -1,4 +1,4 @@
-# (C) Copyright 2005- ECMWF.
+# Copyright 2005-2019 ECMWF.
 
 # The mars labeling must be inline
 # template mars_labeling "grib1/mars_labeling.def";
